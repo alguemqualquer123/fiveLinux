@@ -108,6 +108,15 @@ fivem-linux wine info      # Show prefix info
 fivem-linux wine repair    # Repair prefix
 fivem-linux wine proton    # Show Proton versions
 
+# Rockstar Games Launcher
+fivem-linux rockstar launch     # Launch Rockstar Launcher
+fivem-linux rockstar status     # Show launcher status
+fivem-linux rockstar games      # List installed Rockstar games
+fivem-linux rockstar setup      # Setup Wine prefix for Rockstar
+fivem-linux rockstar install-deps  # Install VC++ Redistributables
+fivem-linux rockstar login      # Login to Rockstar account
+fivem-linux rockstar steam-login # Login via Steam
+
 # Cache management
 fivem-linux cache size     # Show cache size
 fivem-linux cache clear    # Clear cache
@@ -166,7 +175,8 @@ FiveMLinuxSDK/
 ├── gta/            Installation detector, file checker, repair system
 ├── graphics/       Vulkan, DXVK, VKD3D, GPU detection
 ├── network/        Latency tests, firewall, port management
-├── cli/            Command-line interface
+├── rockstar/       Rockstar Games Launcher, Social Club, account management
+├── cli/            Command-line interface (animated)
 ├── tests/          Unit and integration tests
 └── docs/           Documentation
 ```
@@ -206,7 +216,15 @@ FiveMLinuxSDK/
 | FiveM Docs | https://docs.fivem.net/ | Documentation |
 | FiveM Artifacts | https://runtime.fivem.net/artifacts/ | Build downloads |
 | GTA V (Steam) | https://store.steampowered.com/app/271590/ | Buy GTA V |
-| Rockstar | https://www.rockstargames.com/ | Official site |
+| GTA V (Rockstar) | https://www.rockstargames.com/games/V | Buy from Rockstar |
+
+### Rockstar Games
+| Tool | Link | Description |
+|------|------|-------------|
+| Rockstar Launcher | https://www.rockstargames.com/downloads | Download launcher |
+| Social Club | https://socialclub.rockstargames.com/ | Account management |
+| Rockstar Support | https://support.rockstargames.com/ | Help & support |
+| RDR2 (Steam) | https://store.steampowered.com/app/1174180/ | Buy RDR2 |
 
 ### GPU Drivers
 | Vendor | Link |
