@@ -1,0 +1,23 @@
+add_executable(test_core test_core.cpp)
+target_include_directories(test_core PRIVATE ${CMAKE_SOURCE_DIR}/include ${CMAKE_BINARY_DIR}/generated)
+target_link_libraries(test_core PRIVATE fml_core)
+target_compile_features(test_core PRIVATE cxx_std_20)
+add_test(NAME test_core COMMAND test_core)
+
+add_executable(test_wine test_wine.cpp)
+target_include_directories(test_wine PRIVATE ${CMAKE_SOURCE_DIR}/include ${CMAKE_BINARY_DIR}/generated)
+target_link_libraries(test_wine PRIVATE fml_core fml_wine)
+target_compile_features(test_wine PRIVATE cxx_std_20)
+add_test(NAME test_wine COMMAND test_wine)
+
+add_executable(test_fivem test_fivem.cpp)
+target_include_directories(test_fivem PRIVATE ${CMAKE_SOURCE_DIR}/include ${CMAKE_BINARY_DIR}/generated)
+target_link_libraries(test_fivem PRIVATE fml_core fivem_manager)
+target_compile_features(test_fivem PRIVATE cxx_std_20)
+add_test(NAME test_fivem COMMAND test_fivem)
+
+add_executable(test_graphics test_graphics.cpp)
+target_include_directories(test_graphics PRIVATE ${CMAKE_SOURCE_DIR}/include ${CMAKE_BINARY_DIR}/generated)
+target_link_libraries(test_graphics PRIVATE fml_core fml_graphics)
+target_compile_features(test_graphics PRIVATE cxx_std_20)
+add_test(NAME test_graphics COMMAND test_graphics)

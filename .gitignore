@@ -22,3 +22,6 @@ Thumbs.db
 *.a
 *.so
 *.dylib
+
+build
+target

@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  builder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    command: bash -c "cd build && cmake .. -DCMAKE_BUILD_TYPE=Debug && make -j$(nproc) && ./fml_core_tests"

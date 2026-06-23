@@ -30,9 +30,12 @@ add_subdirectory(src/gta)
 add_subdirectory(src/graphics)
 add_subdirectory(src/network)
 
-add_library(fivemlinux SHARED)
+add_library(fivemlinux SHARED
+    src/api.cpp
+)
 target_include_directories(fivemlinux PUBLIC
     ${CMAKE_SOURCE_DIR}/include
+    ${CMAKE_SOURCE_DIR}/src
     ${CMAKE_BINARY_DIR}/generated
 )
 
