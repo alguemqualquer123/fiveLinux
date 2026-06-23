@@ -4,6 +4,7 @@
 #include <vector>
 #include <functional>
 #include <map>
+#include <chrono>
 
 #include "fivemlinux/types.h"
 
@@ -22,12 +23,22 @@ public:
 
     int run(int argc, char* argv[]);
     void registerCommand(const CliCommand& cmd);
-    void printHelp() const;
-    void printVersion() const;
 
 private:
     void registerBuiltinCommands();
     std::vector<std::string> parseArgs(int argc, char* argv[]);
+
+    void printBanner();
+    void printStars();
+    void printMeteor();
+    void printLoadingBar(float progress, const std::string& label);
+    void printSeparator();
+    void printHeader(const std::string& title);
+    void printSuccess(const std::string& msg);
+    void printError(const std::string& msg);
+    void printWarning(const std::string& msg);
+    void printInfo(const std::string& msg);
+    void printCheck(bool ok, const std::string& label, const std::string& detail = "");
 
     int cmdStatus(const std::vector<std::string>& args);
     int cmdRepair(const std::vector<std::string>& args);
@@ -39,6 +50,8 @@ private:
     int cmdGpu(const std::vector<std::string>& args);
     int cmdServer(const std::vector<std::string>& args);
     int cmdNetwork(const std::vector<std::string>& args);
+    int cmdRockstar(const std::vector<std::string>& args);
+    int cmdVersion(const std::vector<std::string>& args);
 
     std::map<std::string, CliCommand> commands_;
 };

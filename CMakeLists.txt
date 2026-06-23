@@ -29,6 +29,7 @@ add_subdirectory(src/fivem)
 add_subdirectory(src/gta)
 add_subdirectory(src/graphics)
 add_subdirectory(src/network)
+add_subdirectory(src/rockstar)
 
 add_library(fivemlinux SHARED
     src/api.cpp
@@ -46,6 +47,7 @@ target_link_libraries(fivemlinux
     fml_gta
     fml_graphics
     fml_network
+    fml_rockstar
     stdc++fs
     pthread
 )
