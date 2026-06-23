@@ -63,9 +63,11 @@ public:
 
     bool configurePrefix(const std::string& prefixPath);
     bool installDependencies(const std::string& prefixPath);
+    bool installSocialClub(const std::string& prefixPath);
 
     std::string getLauncherPath() const;
     std::string getDefaultPrefix() const;
+    pid_t getProcessId() const { return pid_; }
 
     static std::vector<std::string> getSearchPaths();
     static std::string getSocialClubRegistryPath();
@@ -75,7 +77,6 @@ private:
                             const std::string& prefixPath,
                             const std::string& args);
     bool setupWineEnvironment(const std::string& prefixPath);
-    bool installSocialClub(const std::string& prefixPath);
     bool installLauncher(const std::string& prefixPath);
     bool checkSocialClubVersion(const std::string& prefixPath);
 

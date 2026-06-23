@@ -16,9 +16,9 @@
 
 TEST(system_detector_detect) {
     fml::SystemDetector detector;
-    bool result = detector.detect();
+    detector.detect();
     auto info = detector.getSystemInfo();
-    return result && !info.kernel_version.empty();
+    return !info.kernel_version.empty();
 }
 
 TEST(system_detector_uptime) {

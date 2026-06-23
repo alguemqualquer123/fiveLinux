@@ -1,13 +1,22 @@
 #include "fivemlinux/fivemlinux.h"
+#include "core/logger.h"
 #include "core/system_detector.h"
 #include "core/environment.h"
 #include "graphics/gpu_detector.h"
+#include "graphics/vulkan_checker.h"
+#include "wine/prefix_manager.h"
 #include "wine/proton_support.h"
 #include "fivem/installer.h"
+#include "fivem/launcher.h"
 #include "gta/repair_system.h"
 #include "network/firewall_check.h"
 
 #include <iostream>
+#include <cstdlib>
+
+#ifndef FML_VERSION
+#define FML_VERSION "1.0.0"
+#endif
 
 namespace fml {
 

@@ -9,7 +9,7 @@ namespace fml {
 
 void GtaRepairSystem::addCheck(DiagnosticReport& report, const std::string& name,
                                 bool passed, const std::string& message,
-                                const std::string& fix) {
+                                const std::string& fix) const {
     DiagnosticReport::Check check{};
     check.name = name;
     check.passed = passed;

@@ -30,7 +30,7 @@ public:
 private:
     void addCheck(DiagnosticReport& report, const std::string& name,
                   bool passed, const std::string& message,
-                  const std::string& fix = "");
+                  const std::string& fix = "") const;
 };
 
 } // namespace fml

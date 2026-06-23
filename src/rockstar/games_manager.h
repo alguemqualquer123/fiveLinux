@@ -12,7 +12,7 @@ enum class RockstarGame {
     GTAV,
     RDR2,
     MaxPayne3,
-    L.A.Noire,
+    LANoire,
     Bully,
     Unknown
 };

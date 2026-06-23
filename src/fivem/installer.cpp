@@ -30,7 +30,7 @@ FiveMInstallInfo FiveMInstaller::getInstallInfo(const std::string& installDir) c
     info.hasCitizenFX = std::filesystem::exists(iniPath);
     info.hasCache = std::filesystem::exists(cacheDir);
 
-    if (iniPath.exists()) {
+    if (std::filesystem::exists(iniPath)) {
         std::ifstream ini(iniPath);
         if (ini.is_open()) {
             std::string line;

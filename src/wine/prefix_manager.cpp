@@ -6,6 +6,7 @@
 #include <memory>
 #include <stdexcept>
 #include <sstream>
+#include <fstream>
 
 namespace fml {
 

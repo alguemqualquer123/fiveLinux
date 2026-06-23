@@ -10,7 +10,7 @@ std::string RockstarGamesManager::gameToString(RockstarGame game) {
         case RockstarGame::GTAV: return "Grand Theft Auto V";
         case RockstarGame::RDR2: return "Red Dead Redemption 2";
         case RockstarGame::MaxPayne3: return "Max Payne 3";
-        case RockstarGame::L.A.Noire: return "L.A. Noire";
+        case RockstarGame::LANoire: return "L.A. Noire";
         case RockstarGame::Bully: return "Bully";
         default: return "Unknown";
     }
@@ -24,7 +24,7 @@ RockstarGame RockstarGamesManager::stringToGame(const std::string& name) {
     if (name.find("Max Payne") != std::string::npos)
         return RockstarGame::MaxPayne3;
     if (name.find("L.A. Noire") != std::string::npos || name.find("LANoire") != std::string::npos)
-        return RockstarGame::L.A.Noire;
+        return RockstarGame::LANoire;
     if (name.find("Bully") != std::string::npos)
         return RockstarGame::Bully;
     return RockstarGame::Unknown;
@@ -48,7 +48,7 @@ std::vector<std::string> RockstarGamesManager::getGameSearchPaths(RockstarGame g
         case RockstarGame::MaxPayne3:
             gameName = "Max Payne 3";
             break;
-        case RockstarGame::L.A.Noire:
+        case RockstarGame::LANoire:
             gameName = "L.A. Noire";
             break;
         case RockstarGame::Bully:
@@ -150,7 +150,7 @@ std::vector<GameLicense> RockstarGamesManager::getOwnedGames() const {
         RockstarGame::GTAV,
         RockstarGame::RDR2,
         RockstarGame::MaxPayne3,
-        RockstarGame::L.A.Noire,
+        RockstarGame::LANoire,
         RockstarGame::Bully
     };
 

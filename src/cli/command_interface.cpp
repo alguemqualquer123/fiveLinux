@@ -16,6 +16,7 @@
 #include "gta/repair_system.h"
 #include "graphics/vulkan_checker.h"
 #include "graphics/dxvk_checker.h"
+#include "graphics/vkd3d_checker.h"
 #include "graphics/gpu_detector.h"
 #include "network/latency_test.h"
 #include "network/firewall_check.h"
@@ -431,7 +432,7 @@ int CommandInterface::cmdStatus(const std::vector<std::string>&) {
         WinePrefixManager prefixMgr;
         auto info = prefixMgr.getPrefixInfo(prefixPath);
         if (info && info->exists) {
-            printCheck(true, "Wine Prefix", (info->is64bit ? "64-bit" : "32-bit") +
+            printCheck(true, "Wine Prefix", std::string(info->is64bit ? "64-bit" : "32-bit") +
                        " (" + std::to_string(info->sizeBytes / 1024 / 1024) + " MB)");
         } else {
             printCheck(false, "Wine Prefix", "Not found");

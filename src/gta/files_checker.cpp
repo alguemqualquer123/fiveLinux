@@ -60,7 +60,7 @@ std::vector<FileCheckResult> GtaFilesChecker::checkFiles(const std::string& inst
             std::error_code ec;
             result.actualSize = std::filesystem::file_size(fullPath, ec);
             result.correctSize = !ec;
-            result.corrupt = ec;
+            result.corrupt = (ec != std::error_code{});
         } else {
             result.actualSize = 0;
             result.correctSize = false;

@@ -29,7 +29,7 @@ std::string RockstarLauncher::getSocialClubRegistryPath() {
     return "HKEY_CURRENT_USER\\Software\\Rockstar Games\\Social Club";
 }
 
-std::string RockstarLauncher::getDefaultPrefix() {
+std::string RockstarLauncher::getDefaultPrefix() const {
     const char* home = getenv("HOME");
     return home ? std::string(home) + "/.fivem-linux/prefix" : "";
 }
