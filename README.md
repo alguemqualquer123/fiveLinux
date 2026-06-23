@@ -19,39 +19,63 @@ A professional C++20 library/framework that provides comprehensive support for r
 - **CLI interface**: Powerful command-line tool for all operations
 - **Public API**: C++ API for integration into other applications
 
-## Architecture
-
-```
-FiveMLinuxSDK/
-├── core/           System detection, logging, config, environment
-├── wine/           Prefix management, registry, DLL overrides, Proton
-├── fivem/          Installer, updater, launcher, cache, server tools
-├── gta/            Installation detector, file checker, repair system
-├── graphics/       Vulkan, DXVK, VKD3D, GPU detection
-├── network/        Latency tests, firewall, port management
-├── cli/            Command-line interface
-├── tests/          Unit and integration tests
-└── docs/           Documentation
-```
-
-## Installation
-
-### Prerequisites
-
-- C++20 compiler (GCC 11+ or Clang 13+)
-- CMake 3.20+
-- Wine (for FiveM/GTA V)
-- Vulkan drivers
-
-### Build from source
+## Quick Start (3 commands)
 
 ```bash
 git clone https://github.com/alguemqualquer123/fiveLinux.git
 cd fiveLinux
-mkdir build && cd build
-cmake ..
-make -j$(nproc)
-sudo make install
+./install-deps.sh && ./build.sh
+```
+
+That's it! The scripts automatically detect your distro and install everything needed.
+
+## Installation
+
+### One-Line Install
+
+```bash
+git clone https://github.com/alguemqualquer123/fiveLinux.git && cd fiveLinux && ./install-deps.sh && ./build.sh
+```
+
+### Step by Step
+
+**1. Clone the repository:**
+```bash
+git clone https://github.com/alguemqualquer123/fiveLinux.git
+cd fiveLinux
+```
+
+**2. Install dependencies (auto-detects your distro):**
+```bash
+./install-deps.sh
+```
+
+**3. Build the project:**
+```bash
+./build.sh
+```
+
+**4. Install to system (optional):**
+```bash
+sudo cmake --install build/
+```
+
+**5. Run:**
+```bash
+fivem-linux --help
+```
+
+### Build Options
+
+```bash
+# Debug build
+./build.sh Debug
+
+# Release build (default)
+./build.sh Release
+
+# Build and run immediately
+./run.sh status
 ```
 
 ### Build with Docker
@@ -60,18 +84,16 @@ sudo make install
 docker-compose up --build
 ```
 
-## Usage
-
-### CLI Commands
+## CLI Commands
 
 ```bash
 # Show system status
 fivem-linux status
 
-# Run diagnostics
+# Run full diagnostics
 fivem-linux diagnose
 
-# Auto-repair issues
+# Auto-repair common issues
 fivem-linux repair
 
 # Install FiveM
@@ -81,24 +103,26 @@ fivem-linux install
 fivem-linux launch
 
 # Wine prefix management
-fivem-linux wine create
-fivem-linux wine info
-fivem-linux wine repair
+fivem-linux wine create    # Create new prefix
+fivem-linux wine info      # Show prefix info
+fivem-linux wine repair    # Repair prefix
+fivem-linux wine proton    # Show Proton versions
 
 # Cache management
-fivem-linux cache size
-fivem-linux cache clear
+fivem-linux cache size     # Show cache size
+fivem-linux cache clear    # Clear cache
+fivem-linux cache list     # List cache contents
 
 # GPU information
-fivem-linux gpu
+fivem-linux gpu            # Show GPU details
 
 # Network diagnostics
-fivem-linux network ping
-fivem-linux network ports
-fivem-linux network firewall
+fivem-linux network ping       # Test FiveM servers
+fivem-linux network ports      # Check required ports
+fivem-linux network firewall   # Firewall status
 ```
 
-### Public API (C++)
+## Public API (C++)
 
 ```cpp
 #include <fivemlinux/fivemlinux.h>
@@ -126,14 +150,78 @@ int main() {
 }
 ```
 
-## Building Tests
+### Compile with the library
 
 ```bash
-cd build
-cmake -DFML_BUILD_TESTS=ON ..
-make -j$(nproc)
-ctest --output-on-failure
+g++ -std=c++20 myapp.cpp -lfivemlinux -o myapp
 ```
+
+## Architecture
+
+```
+FiveMLinuxSDK/
+├── core/           System detection, logging, config, environment
+├── wine/           Prefix management, registry, DLL overrides, Proton
+├── fivem/          Installer, updater, launcher, cache, server tools
+├── gta/            Installation detector, file checker, repair system
+├── graphics/       Vulkan, DXVK, VKD3D, GPU detection
+├── network/        Latency tests, firewall, port management
+├── cli/            Command-line interface
+├── tests/          Unit and integration tests
+└── docs/           Documentation
+```
+
+## Required Programs
+
+| Program | Purpose | Install |
+|---------|---------|---------|
+| GCC/G++ | C++ compiler | `sudo apt install build-essential` |
+| CMake | Build system | `sudo apt install cmake` |
+| Wine | Windows compatibility | https://www.winehq.org/ |
+| Vulkan | Graphics API | `sudo apt install vulkan-tools` |
+| curl | Download tool | `sudo apt install curl` |
+| 7zip | Archive extraction | `sudo apt install p7zip-full` |
+
+## Useful Links
+
+### Wine & Proton
+| Tool | Link | Description |
+|------|------|-------------|
+| Wine | https://www.winehq.org/ | Windows compatibility layer |
+| Wine-GE | https://github.com/GloriousEggroll/wine-ge-custom | Custom Wine build for gaming |
+| Proton | https://github.com/ValveSoftware/Proton | Valve's Wine fork for Steam |
+| Proton-GE | https://github.com/GloriousEggroll/proton-ge-custom | Community Proton build |
+| ProtonDB | https://www.protondb.com/ | Compatibility reports |
+
+### DXVK & VKD3D
+| Tool | Link | Description |
+|------|------|-------------|
+| DXVK | https://github.com/doitsujin/dxvk | Vulkan-based D3D9/10/11 |
+| VKD3D-Proton | https://github.com/doitsujin/vkd3d-proton | Vulkan-based D3D12 |
+
+### FiveM & GTA V
+| Tool | Link | Description |
+|------|------|-------------|
+| FiveM | https://fivem.net/ | Multiplayer modification |
+| FiveM Docs | https://docs.fivem.net/ | Documentation |
+| FiveM Artifacts | https://runtime.fivem.net/artifacts/ | Build downloads |
+| GTA V (Steam) | https://store.steampowered.com/app/271590/ | Buy GTA V |
+| Rockstar | https://www.rockstargames.com/ | Official site |
+
+### GPU Drivers
+| Vendor | Link |
+|--------|------|
+| NVIDIA | https://www.nvidia.com/drivers |
+| AMD | https://www.amd.com/en/support |
+| Intel | https://www.intel.com/content/www/us/en/download-center/home.html |
+
+### Alternative Launchers
+| Launcher | Link | Description |
+|----------|------|-------------|
+| Bottles | https://usebottles.com/ | Flatpak Wine manager |
+| Lutris | https://lutris.net/ | Gaming platform |
+| Heroic | https://heroicgameslauncher.com/ | Epic/GOG/Prime launcher |
+| Steam | https://store.steampowered.com/ | Valve's platform |
 
 ## Supported Platforms
 
@@ -147,6 +235,8 @@ ctest --output-on-failure
 | Linux Mint 21+ | Supported |
 | Pop!_OS 22.04+ | Supported |
 | SteamOS 3.x | Supported |
+| Manjaro | Supported |
+| openSUSE | Supported |
 
 ## Contributing
 
@@ -170,4 +260,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Star this repo if you find it useful!** Your support helps keep the project alive and motivates further development.
+**Star this repo if you find it useful!** Your support helps keep the project alive and motivates further development. 
+
+**Want to contribute?** Fork the repo, make your changes, and submit a pull request. All contributions are welcome!
